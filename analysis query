@@ -1,0 +1,14 @@
+-- Sales by Category
+SELECT Category, SUM(Sales) as Total_Sales, SUM(Profit) as Total_Profit
+FROM RETAIL_DB.PUBLIC.CLEAN_SALES
+GROUP BY Category ORDER BY Total_Sales DESC;
+
+-- Top 10 Products
+SELECT Product_Name, SUM(Sales) as Sales
+FROM RETAIL_DB.PUBLIC.CLEAN_SALES
+GROUP BY Product_Name ORDER BY Sales DESC LIMIT 10;
+
+-- Monthly Trend
+SELECT YEAR(Order_Date) as Year, MONTH(Order_Date) as Month, SUM(Sales) as Sales
+FROM RETAIL_DB.PUBLIC.CLEAN_SALES
+GROUP BY Year, Month ORDER BY Year, Month;
